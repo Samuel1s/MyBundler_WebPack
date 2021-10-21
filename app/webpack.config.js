@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    mode: 'development',
+    mode: 'development',  // Opcional ou em package.json --mode development
     devtool: 'source-map',
     entry: './src/index.js',
     output: {
@@ -17,8 +17,18 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+ 
+                test: /\.html$/,
+                use: {
+                    loader: 'html-loader'
+                }
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
     },
     plugins: [
         new HtmlWebPackPlugin({
